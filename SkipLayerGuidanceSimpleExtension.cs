@@ -15,7 +15,7 @@ public class SkipLayerGuidanceSimpleExtension : Extension
 
     public override void OnInit()
     {
-        SkipLayerGuidanceGroup = new("Skip Layer Guidance Simple", Toggles: true, Open: false, IsAdvanced: true, Description: "Applies Skip Layer Guidance (SLG, SD3.5 logic trick) or Spatiotemporal Skip Guidance (STG, LTX-Video logic trick).");
+        SkipLayerGuidanceSimpleGroup = new("Skip Layer Guidance Simple", Toggles: true, Open: false, IsAdvanced: true, Description: "Applies Skip Layer Guidance (SLG, SD3.5 logic trick) or Spatiotemporal Skip Guidance (STG, LTX-Video logic trick).");
         StartPercent = T2IParamTypes.Register<double>(new("[SLG] Start Percent", "[Skip Layer Guidance]\nHow far into the generation before SLG starts applying.\nAt 0, does nothing (ie does not delay, and SLG runs in full).\nFor SD3, 0.01 is recommended. For LTX-Video, 0 is recommended.",
             "0", IgnoreIf: "0", Min: 0, Max: 1, Step: 0.01, Group: SkipLayerGuidanceGroup, OrderPriority: 2, ViewType: ParamViewType.SLIDER, Examples: ["0", "0.01", "0.1"]
             ));
