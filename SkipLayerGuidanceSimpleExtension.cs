@@ -38,6 +38,7 @@ public class SkipLayerGuidanceSimpleExtension : Extension
                     ["end_percent"] = g.UserInput.Get(EndPercent, 1),
                 });
                 g.LoadingModel = [newNode, 0];
+            }
         }, -6.5);
     }
 }
