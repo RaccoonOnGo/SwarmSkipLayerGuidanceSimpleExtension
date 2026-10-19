@@ -27,7 +27,8 @@ public class SkipLayerGuidanceSimpleExtension : Extension
             ));
         WorkflowGenerator.AddModelGenStep(g =>
         {
-                string target = g.UserInput.Get(LayerTarget, g.IsLTXV() ? "14, 19" : "7, 8, 9");
+            if (g.UserInput.TryGet(LayerTarget, out string target))
+            {
                 string newNode = g.CreateNode("SkipLayerGuidanceDiTSimple", new JObject()
                 {
                     ["model"] = g.LoadingModel,
