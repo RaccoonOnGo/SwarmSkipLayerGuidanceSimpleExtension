@@ -16,14 +16,14 @@ public class SkipLayerGuidanceSimpleExtension : Extension
     public override void OnInit()
     {
         SkipLayerGuidanceSimpleGroup = new("Skip Layer Guidance Simple", Toggles: true, Open: false, IsAdvanced: true, Description: "Applies Skip Layer Guidance (SLG, SD3.5 logic trick) or Spatiotemporal Skip Guidance (STG, LTX-Video logic trick).");
-        StartPercent = T2IParamTypes.Register<double>(new("[SLG] Start Percent", "[Skip Layer Guidance]\nHow far into the generation before SLG starts applying.\nAt 0, does nothing (ie does not delay, and SLG runs in full).\nFor SD3, 0.01 is recommended. For LTX-Video, 0 is recommended.",
-            "0", IgnoreIf: "0", Min: 0, Max: 1, Step: 0.01, Group: SkipLayerGuidanceGroup, OrderPriority: 2, ViewType: ParamViewType.SLIDER, Examples: ["0", "0.01", "0.1"]
+        StartPercent = T2IParamTypes.Register<double>(new("[SLG.s] Start Percent", "[Skip Layer Guidance]\nHow far into the generation before SLG starts applying.\nAt 0, does nothing (ie does not delay, and SLG runs in full).\nFor SD3, 0.01 is recommended. For LTX-Video, 0 is recommended.",
+            "0", IgnoreIf: "0", Min: 0, Max: 1, Step: 0.01, Group: SkipLayerGuidanceSimpleGroup, OrderPriority: 2, ViewType: ParamViewType.SLIDER, Examples: ["0", "0.01", "0.1"]
             ));
-        EndPercent = T2IParamTypes.Register<double>(new("[SLG] End Percent", "[Skip Layer Guidance]\nHow far into the generation before SLG stops applying.\nAt 1, does nothing (ie does not end early, and SLG runs in full).\nFor SD3, 0.15 is recommended. For LTX-Video, 1 is recommended.",
-            "1", IgnoreIf: "1", Min: 0, Max: 1, Step: 0.01, Group: SkipLayerGuidanceGroup, OrderPriority: 3, ViewType: ParamViewType.SLIDER, Examples: ["0.15", "0.5", "1"]
+        EndPercent = T2IParamTypes.Register<double>(new("[SLG.s] End Percent", "[Skip Layer Guidance]\nHow far into the generation before SLG stops applying.\nAt 1, does nothing (ie does not end early, and SLG runs in full).\nFor SD3, 0.15 is recommended. For LTX-Video, 1 is recommended.",
+            "1", IgnoreIf: "1", Min: 0, Max: 1, Step: 0.01, Group: SkipLayerGuidanceSimpleGroup, OrderPriority: 3, ViewType: ParamViewType.SLIDER, Examples: ["0.15", "0.5", "1"]
             ));
-        LayerTarget = T2IParamTypes.Register<string>(new("[SLG] Layer Target", "[Skip Layer Guidance]\nWhich layers to apply SLG to, as a comma separated list.\nFor SD3.5, defaults to '7, 8, 9'. For LTX-Video, defaults to '14, 19'",
-            "7, 8, 9", Group: SkipLayerGuidanceGroup, OrderPriority: 5, Toggleable: true
+        LayerTarget = T2IParamTypes.Register<string>(new("[SLG.s] Layer Target", "[Skip Layer Guidance]\nWhich layers to apply SLG to, as a comma separated list.\nFor SD3.5, defaults to '7, 8, 9'. For LTX-Video, defaults to '14, 19'",
+            "7, 8, 9", Group: SkipLayerGuidanceSimpleGroup, OrderPriority: 5, Toggleable: true
             ));
         WorkflowGenerator.AddModelGenStep(g =>
         {
